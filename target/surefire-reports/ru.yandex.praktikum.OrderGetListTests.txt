@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ru.yandex.praktikum.OrderGetListTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.323 s - in ru.yandex.praktikum.OrderGetListTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.198 s - in ru.yandex.praktikum.OrderGetListTests

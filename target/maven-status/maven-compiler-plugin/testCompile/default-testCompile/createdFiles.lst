@@ -1,8 +1,6 @@
-ru\yandex\praktikum\CourierCreatingTests$CourierParametrizedTests.class
+ru\yandex\praktikum\CourierCreatingNegativeTests.class
+ru\yandex\praktikum\CourierCreatingPositiveTests.class
 ru\yandex\praktikum\OrderGetListTests.class
-ru\yandex\praktikum\CourierLoginTests.class
-ru\yandex\praktikum\CourierLoginTests$CourierLoginParametrizedTests.class
-ru\yandex\praktikum\CourierLoginTests$CourierLoginTestWithCorrectParams.class
-ru\yandex\praktikum\CourierCreatingTests$CourierCreatingTestWithCorrectParams.class
 ru\yandex\praktikum\OrderCreatingTests.class
-ru\yandex\praktikum\CourierCreatingTests.class
+ru\yandex\praktikum\CourierLoginNegativeTests.class
+ru\yandex\praktikum\CourierLoginPositiveTests.class

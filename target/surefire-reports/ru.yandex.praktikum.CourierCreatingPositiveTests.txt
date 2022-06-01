@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: ru.yandex.praktikum.CourierCreatingPositiveTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.102 s <<< FAILURE! - in ru.yandex.praktikum.CourierCreatingPositiveTests
+shouldNotCreateCourierWithDuplicateData(ru.yandex.praktikum.CourierCreatingPositiveTests)  Time elapsed: 0.632 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+JSON path message doesn't match.
+Expected: Ётот логин уже используетс€
+  Actual: Ётот логин уже используетс€. ѕопробуйте другой.
+
+	at ru.yandex.praktikum.CourierCreatingPositiveTests.shouldNotCreateCourierWithDuplicateData(CourierCreatingPositiveTests.java:44)
+

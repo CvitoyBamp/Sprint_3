@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ru.yandex.praktikum.OrderCreatingTests" time="0.648" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ru.yandex.praktikum.CourierLoginNegativeTests" time="60.849" tests="3" errors="0" skipped="0" failures="1">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,8 +61,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="shouldResponseOkWithCorrectParams[0]" classname="ru.yandex.praktikum.OrderCreatingTests" time="0.164"/>
-  <testcase name="shouldResponseOkWithCorrectParams[1]" classname="ru.yandex.praktikum.OrderCreatingTests" time="0.138"/>
-  <testcase name="shouldResponseOkWithCorrectParams[2]" classname="ru.yandex.praktikum.OrderCreatingTests" time="0.143"/>
-  <testcase name="shouldResponseOkWithCorrectParams[3]" classname="ru.yandex.praktikum.OrderCreatingTests" time="0.173"/>
+  <testcase name="shouldResponseBadRequestWhileAuthorizingWithoutPassword" classname="ru.yandex.praktikum.CourierLoginNegativeTests" time="60.235">
+    <failure message="1 expectation failed.&#10;Expected status code &lt;400&gt; but was &lt;504&gt;.&#10;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <400> but was <504>.
+
+	at ru.yandex.praktikum.CourierLoginNegativeTests.shouldResponseBadRequestWhileAuthorizingWithoutPassword(CourierLoginNegativeTests.java:40)
+]]></failure>
+  </testcase>
+  <testcase name="shouldResponseBadRequestWhileAuthorizingWithNonexistentData" classname="ru.yandex.praktikum.CourierLoginNegativeTests" time="0.301"/>
+  <testcase name="shouldResponseBadRequestWhileAuthorizingWithoutLogin" classname="ru.yandex.praktikum.CourierLoginNegativeTests" time="0.281"/>
 </testsuite>

@@ -2,12 +2,12 @@ package ru.yandex.praktikum;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.apache.commons.lang3.RandomStringUtils;
+import ru.yandex.api.OrderClient;
+import ru.yandex.model.Order;
 
 import java.time.LocalDate;
 
@@ -16,14 +16,9 @@ import static org.hamcrest.Matchers.notNullValue;
 @RunWith(Parameterized.class)
 public class OrderCreatingTests {
 
-    @Before
-    public void setUp() {
-        RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru/";
-    }
+    private final String[] colors;
 
-    private String[] colors;
-
-    static OrderCreatingConstructor orderData = new OrderCreatingConstructor(
+    static Order orderData = new Order(
             RandomStringUtils.randomAlphabetic(6),
             RandomStringUtils.randomAlphabetic(6),
             RandomStringUtils.randomAlphabetic(10),
@@ -52,7 +47,7 @@ public class OrderCreatingTests {
     @DisplayName("Creating an order with different preferred colors")
     @Description("Should return HTTP201 and trackid with different variations of the optional colors parameter")
     public void shouldResponseOkWithCorrectParams() {
-        APIFunctions.createOrder(orderData)
+        OrderClient.createOrder(orderData)
                 .then()
                 .assertThat()
                 .statusCode(201)
