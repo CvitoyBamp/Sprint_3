@@ -1,0 +1,6 @@
+ru\yandex\model\CourierLogin.class
+ru\yandex\api\OrderClient.class
+ru\yandex\api\CourierClient.class
+ru\yandex\api\BaseClient.class
+ru\yandex\model\Order.class
+ru\yandex\model\Courier.class
