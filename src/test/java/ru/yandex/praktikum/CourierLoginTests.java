@@ -3,6 +3,7 @@ package ru.yandex.praktikum;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -23,12 +24,17 @@ public class CourierLoginTests {
             RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru/";
         }
 
+        @After
+        public void deleteCourier() {
+            APIFunctions.deleteCourier(courierLoginData, APIFunctions.getCourierId(courierLoginData));
+        }
+
         CourierCreatingConstructor courierWithCorrectParams = new CourierCreatingConstructor(RandomStringUtils.randomAlphabetic(10),RandomStringUtils.randomAlphabetic(10),RandomStringUtils.randomAlphabetic(10));
         CourierLoginConstructor courierLoginData = new CourierLoginConstructor(courierWithCorrectParams.getLogin(), courierWithCorrectParams.getPassword());
 
         @Test
-        @DisplayName("Логин курьера в системе с корректными данными")
-        @Description("Должно вернуться HTTP200 и id при успешной авторизации")
+        @DisplayName("Courier login in the system with the correct data")
+        @Description("Should return HTTP200 and id on successful authorization")
         public void shouldResponseOkWithCorrectParamsWithinLogin() {
             APIFunctions.createCourier(courierWithCorrectParams);
             APIFunctions.loginCourier(courierLoginData)
@@ -73,8 +79,8 @@ public class CourierLoginTests {
 
 
         @Test
-        @DisplayName("Логин курьера с неполными и несущетсвующими данными")
-        @Description("Должно вернуться HTTP400/404 при авторизации курьера с неполныим или дублирующими данными")
+        @DisplayName("Courier login with incomplete and non-existent data")
+        @Description("Should return HTTP400/404 when authorizing courier with incomplete or duplicate data")
         public void shouldResponseBadRequestWithPartialParamsWithinLogin() {
             APIFunctions.createCourier(courierWithCorrectParams);
             APIFunctions.loginCourier(courierLoginConstructor)

@@ -49,8 +49,8 @@ public class OrderCreatingTests {
     }
 
     @Test
-    @DisplayName("Создание заказа с различными предпочитаемыми цветами")
-    @Description("Должно вернуться HTTP201 и trakeid при различных вариациях необязательного параметра colors")
+    @DisplayName("Creating an order with different preferred colors")
+    @Description("Should return HTTP201 and trackid with different variations of the optional colors parameter")
     public void shouldResponseOkWithCorrectParams() {
         APIFunctions.createOrder(orderData)
                 .then()

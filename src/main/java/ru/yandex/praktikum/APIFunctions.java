@@ -38,10 +38,33 @@ public class APIFunctions {
                 .post(API.LOGIN.getApi());
     }
 
+    public static int getCourierId(CourierLoginConstructor courierLoginConstructor) {
+        return given()
+                .header("Content-type", "application/json")
+                .body(courierLoginConstructor)
+                .post(API.LOGIN.getApi())
+                .then()
+                .extract()
+                .path("id");
+    }
+
+    public static Response deleteCourier(CourierLoginConstructor courierLoginConstructor, int courierId) {
+        return given()
+                .header("Content-type", "application/json")
+                .body(courierLoginConstructor)
+                .delete(API.CREATE.getApi()+String.valueOf(courierId));
+    }
+
     public static Response createOrder(OrderCreatingConstructor orderCreatingConstructor) {
         return given()
                 .header("Content-type", "application/json")
                 .body(orderCreatingConstructor)
                 .post(API.ORDER.getApi());
+    }
+
+    public static Response getOrderList() {
+        return given()
+                .header("Content-type", "application/json")
+                .get(API.ORDER.getApi());
     }
 }

@@ -3,6 +3,7 @@ package ru.yandex.praktikum;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -21,11 +22,17 @@ public class CourierCreatingTests {
             RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru/";
         }
 
+        @After
+        public void deleteCourier() {
+            APIFunctions.deleteCourier(courierLoginData, APIFunctions.getCourierId(courierLoginData));
+        }
+
         CourierCreatingConstructor courierWithCorrectParams = new CourierCreatingConstructor(RandomStringUtils.randomAlphabetic(10),RandomStringUtils.randomAlphabetic(10),RandomStringUtils.randomAlphabetic(10));
+        CourierLoginConstructor courierLoginData = new CourierLoginConstructor(courierWithCorrectParams.getLogin(), courierWithCorrectParams.getPassword());
 
         @Test
-        @DisplayName("Создание курьера с корректными данными")
-        @Description("Должно вернуться HTTP201 при успешном создании курьера")
+        @DisplayName("Creating a courier with correct data")
+        @Description("Should return HTTP201 if the courier is successfully created")
         public void shouldResponseOkWithCorrectParamsWithinCreating() {
             APIFunctions.createCourier(courierWithCorrectParams)
                     .then()
@@ -72,8 +79,8 @@ public class CourierCreatingTests {
 
 
         @Test
-        @DisplayName("Создание курьера с неполными данными")
-        @Description("Должно вернуться HTTP400/409 при создании курьера с неполныим или дублирующими данными")
+        @DisplayName("Creating a courier with incomplete data")
+        @Description("Should return HTTP400/409 when creating a courier with incomplete or duplicate data")
         public void shouldResponseBadRequestWithPartialParamsWithinCreating() {
             APIFunctions.createCourier(courierCreatingConstructor)
                     .then()
